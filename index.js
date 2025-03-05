@@ -5,7 +5,12 @@ const customer_routes = require('./router/auth_users.js').authenticated;
 const genl_routes = require('./router/general.js').general;
 const app = express();
 const cors = require('cors');
-app.use(cors());
+app.use(
+  cors({
+    origin: '*', // Allow frontend origin
+    credentials: true, // 🔥 Required for session cookies
+  })
+);
 
 app.use(express.json());
 
